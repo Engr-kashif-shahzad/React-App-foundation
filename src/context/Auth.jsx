@@ -11,7 +11,7 @@ const AuthContext = ({ children }) => {
 
     const readProfile = () => {
         const user = { uid: '123', email: 'shakil@gmail.com', name: "Kashif Shahzad" }
-        setState({ isAuth: true, user })
+        // setState({ isAuth: true, user })
         setTimeout(()=>{
             setIsAppLoading(false)
         }, 2000)
