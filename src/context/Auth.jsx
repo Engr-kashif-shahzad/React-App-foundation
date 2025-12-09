@@ -10,20 +10,23 @@ const AuthContext = ({ children }) => {
     const [isAppLoading, setIsAppLoading] = useState(true)
 
     const readProfile = () => {
-        const user = { uid: '123', email: 'shakil@gmail.com', name: "Kashif Shahzad" }
-        // setState({ isAuth: true, user })
+        const user = JSON.parse(localStorage.getItem("user")) 
+        if(user){
+            setState({ isAuth: true, user })
+        }
         setTimeout(()=>{
             setIsAppLoading(false)
-        }, 2000)
+        }, 2000);
     }
     useEffect(() => { readProfile() },[])
     const handleLogout = () => {
         setState(initialState)
+        localStorage.removeItem("user")
+        setState(initialState)
     }
-
     return (
         // <Auth.Provider value={{isAuth: state.isAuth, user: state.user,isAppLoading }}>
-        <Auth.Provider value={{ ...state, isAppLoading, handleLogout }}>
+        <Auth.Provider value={{ ...state, isAppLoading, handleLogout, dispatch: setState }}>
             {children}
         </Auth.Provider>
     )
