@@ -11,7 +11,6 @@ const Login = () => {
 
   const [state, setState] = useState(initialState)
   const [isProcessing, setIsProcessing] = useState(false)
-
   const navigate = useNavigate()
   const handleChange = e => setState(s => ({ ...s, [e.target.name]: e.target.value }))
   const handleLogin = () => {
@@ -20,14 +19,11 @@ const Login = () => {
     setIsProcessing(true)
 
     const users = JSON.parse(localStorage.getItem('users')) || []
-
     const user = users.find(user => user.email === email && user.password === password)
-
     if (!user) {
       setIsProcessing(false)
       return window.toastify("Invalid email or password", "error")
     }
-    
     setTimeout(() => {
       localStorage.setItem('user', JSON.stringify(user))
       dispatch({ isAuth: true, user })
@@ -42,6 +38,7 @@ const Login = () => {
         <div className="card p-3 p-4 mx-auto">
           <Title level={1} className="text-center">Login</Title>
           <Paragraph className="text-center">Don't have an account? <Link to='/auth/register'>Create Account</Link></Paragraph>
+          <Paragraph className="text-center">Forgot Password? <Link to='/auth/forgot-password'>Reset Password</Link></Paragraph>
           <Form layout="vertical">
 
             <Item label='Email' required>

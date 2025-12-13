@@ -1,0 +1,6 @@
+CRUD
+C = Create / Add /SetItem = POST
+R = Read /All / GetItem = GET
+U = Update / Edit / SetItem = PATCH / PUT
+D = Delete / Remove / RemoveItem = DELETE
+ 

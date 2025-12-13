@@ -22,7 +22,6 @@ const AuthContext = ({ children }) => {
     const handleLogout = () => {
         setState(initialState)
         localStorage.removeItem("user")
-        setState(initialState)
     }
     return (
         // <Auth.Provider value={{isAuth: state.isAuth, user: state.user,isAppLoading }}>
